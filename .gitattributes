@@ -1,0 +1,16 @@
+# Normalise les fins de ligne (évite les diffs parasites Windows/Mac/Linux)
+* text=auto eol=lf
+
+# Les scripts shell doivent garder des fins de ligne Unix, même extraits sous Windows
+*.sh text eol=lf
+
+# Fichiers de données officiels : conservés à l'octet près (encodages et fins de ligne d'origine)
+*.csv -text
+
+*.png binary
+*.ico binary
+
+# Données et fichiers générés : exclus des statistiques de langage GitHub
+data/** linguist-vendored
+tests/fixtures/** linguist-vendored
+frontend/src/api/schema.d.ts linguist-generated

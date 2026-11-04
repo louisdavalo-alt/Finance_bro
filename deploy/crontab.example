@@ -1,0 +1,8 @@
+# À ajouter avec `crontab -e` (aucun droit admin requis).
+# Toutes les heures : suffisant pour des indicateurs macro (aucun n'est publié plus vite
+# que le quotidien), le cache DuckDB évite de re-solliciter une source à chaque fois.
+#  - `flock -n` : si l'exécution précédente tourne encore, celle-ci est simplement sautée
+#    (jamais deux pipelines en même temps sur data/macro.duckdb) ;
+#  - `umask 077` : le journal et la base créés ne sont lisibles que par toi.
+# L'API (run_api.sh) peut rester lancée en parallèle : elle ne lit que les exports Parquet.
+0 * * * * cd $HOME/finance-bro && umask 077 && flock -n data/.pipeline.lock .venv/bin/python -m app.pipeline >> data/pipeline.log 2>&1

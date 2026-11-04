@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-slate-950 text-slate-200 antialiased;
+}
+
+/* Couleurs sémantiques réutilisées partout (hausse/baisse, accents) — en variables CSS plutôt
+   qu'en classes Tailwind arbitraires, pour rester cohérent avec les futurs graphiques
+   lightweight-charts (qui prennent des couleurs CSS, pas des classes). */
+:root {
+  --up: #22c55e;
+  --down: #ef4444;
+  --accent: #38bdf8;
+}

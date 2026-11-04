@@ -1,0 +1,33 @@
+# Secrets et configuration locale — NE JAMAIS COMMITTER
+.env
+.env.*
+!.env.example
+
+# Données générées par le pipeline (base DuckDB, exports Parquet, caches, journaux)…
+data/*
+# …sauf les fichiers déposés à la main, nécessaires aux connecteurs BOJ, Tokyo, RBI et MOSPI
+!data/manual/
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Node (le frontend a aussi son propre .gitignore)
+node_modules/
+
+# Éditeurs / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Journaux
+*.log
